@@ -1,0 +1,81 @@
+<div class="container-fluid" style="background-color: antiquewhite;">
+<div class="row">
+    <h2 class="col-12 text-center text-dark text-decoration-underline">TICKETS</h2>
+</div>
+<div class="row mb-2">
+   
+<p>Filtrar por Espectador : </p>
+      <table  class="table table-striped border border-1">
+        <thead>
+        <tr>
+            <th style="width: 20%">
+                <select  id="select-menu" [(ngModel)]="espectadorVar"  style="margin-bottom: 0px;" name="espectador" class="form-select" >   
+                    <option *ngFor="let e of espectadores"  [value]="e._id">{{e.nombre}} , {{e.apellido}}</option>
+                   
+                  </select>
+            </th>
+            <th style="width: 30%">
+                <button class="btn btn-primary" style="margin-top: 0px; margin-bottom: 0px;" (click)="obtenerTicketsEspectador(espectadorVar)" >FILTRAR</button>
+            </th>       
+        </tr>
+        </thead>
+    </table>
+  <br>
+  <p>Filtrar por Categoria : </p>
+      <table  class="table table-striped border border-1">
+        <thead>
+        <tr>
+            <th style="width: 20%">
+                <select  id="select-menu" [(ngModel)]="categoria" style="margin-bottom: 0px;" name="espectador" class="form-select" >   
+                    <option *ngFor="let e of espectador"  [value]="e.name">{{e.name}}</option>
+                   
+                  </select>
+            </th>
+            <th style="width: 30%">
+                <button class="btn btn-primary" style="margin-top: 0px; margin-bottom: 0px;" (click)="obtenerTicketsCategoria(categoria)" >FILTRAR</button>
+            </th>       
+        </tr>
+        </thead>
+    </table>
+    <br>
+  <p>Agregar un Espectador : </p>
+  <div class="col-12">
+    <button class="btn btn-primary" style="margin-top: 0px; margin-bottom: 20px;" (click)="agregarTicket()" >AGREGAR</button>
+</div>
+</div>
+<table  class="table table-striped border border-1">
+    <thead>
+    <tr>
+        <th style="width: 20%">
+            Precio
+        </th>
+        <th style="width: 20%">
+            Categoria
+        </th>
+        <th style="width: 10%">
+            Fecha de Compra
+        </th>
+        <th style="width: 30%">
+            Espectador
+        </th>
+        <th style="width: 20%">
+            
+        </th>        
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let t of tickets">
+        <td>{{t.precioTicket}}</td>
+        <td>{{t.categoriaEspectador}}</td>
+        <td>{{t.fechaCompra}}</td>
+        <td>{{t.espectador.nombre}} , {{t.espectador.apellido}}</td>
+        <td>
+            <button class="btn btn-success" (click)="modificarTicket(t)">Modificar</button>
+            <button class="btn btn-danger" (click)="eliminarTicket(t)" >BORRAR</button>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+
+</div>

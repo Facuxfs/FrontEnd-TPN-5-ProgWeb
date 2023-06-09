@@ -1,0 +1,22 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Email</th>
+        <th scope="col">Moneda Origen</th>
+        <th scope="col">Moneda Destino</th>
+        <th scope="col">Cantidad Origen</th>
+        <th scope="col">Cantidad Destino</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let s of transacciones">
+      <tr>
+        <th scope="row">{{s.emailCliente}}</th>
+        <td>{{s.monedaOrigen}}</td>
+        <td>{{s.monedaDestino}}</td>
+        <td>{{s.cantidadOrigen}}</td>
+        <td>{{s.cantidadDestino}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="btn btn-primary" style="margin-top: 20px; margin-bottom: 20px; margin-left: 10px;" (click)="botonAtras()" >Atras</button>

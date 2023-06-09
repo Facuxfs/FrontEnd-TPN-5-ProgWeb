@@ -1,0 +1,155 @@
+<body>
+
+    <div class="container-fluid">
+      <div class="row">
+        <br>
+        <section class="col-md-8 bg-dark-subtle  d-none d-md-block">
+          <table class="table table-responsive ">
+            <thead>
+              <td></td>
+              <td></td>
+              <td> <img src="./assets/eeuu.png" width="60px" height="50px"> </td>
+              <td><img src="./assets/euro.png" width="60px" height="50px"></td>
+              <td> <img src="./assets/descarga.png" width="60px" height="50px"> </td>
+              <td> <img src="./assets/crasil.webp" width="60px" height="50px"> </td>
+              <td> <img src="./assets/descarga (1).png" width="60px" height="50px"> </td>
+            </thead>
+            <tbody>
+              <tr class="table-active">
+                <td> <img src="./assets/eeuu.png" width="40px" height="30px"> </td>
+                <td> USD </td>
+                <td>1.000000</td>
+                <td>0.919901</td>
+                <td>0.811469</td>
+                <td>7.057569</td>
+                <td>64.87725</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>Inverse</td>
+                <td>1.000000</td>
+                <td>1.087074</td>
+                <td>1.232332</td>
+                <td>0.141692</td>
+                <td>0.015414</td>
+              </tr>
+              <tr class="table-active">
+                <td> <img src="./assets/euro.png" width="40px" height="30px"> </td>
+                <td> USD </td>
+                <td>1.000000</td>
+                <td>0.919901</td>
+                <td>0.811469</td>
+                <td>7.057569</td>
+                <td>64.87725</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>Inverse</td>
+                <td>1.000000</td>
+                <td>1.087074</td>
+                <td>1.232332</td>
+                <td>0.141692</td>
+                <td>0.015414</td>
+              </tr>
+              <tr class="table-active">
+                <td> <img src="./assets/descarga.png" width="40px" height="30px"> </td>
+                <td> USD </td>
+                <td>1.000000</td>
+                <td>0.919901</td>
+                <td>0.811469</td>
+                <td>7.057569</td>
+                <td>64.87725</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>Inverse</td>
+                <td>1.000000</td>
+                <td>1.087074</td>
+                <td>1.232332</td>
+                <td>0.141692</td>
+                <td>0.015414</td>
+              </tr>
+              <tr class="table-active">
+                <td> <img src="./assets/crasil.webp" width="40px" height="30px"> </td>
+                <td> USD </td>
+                <td>1.000000</td>
+                <td>0.919901</td>
+                <td>0.811469</td>
+                <td>7.057569</td>
+                <td>64.87725</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>Inverse</td>
+                <td>1.000000</td>
+                <td>1.087074</td>
+                <td>1.232332</td>
+                <td>0.141692</td>
+                <td>0.015414</td>
+              </tr>
+              <tr class="table-active">
+                <td> <img src="./assets/descarga (1).png" width="40px" height="30px"> </td>
+                <td> USD </td>
+                <td>1.000000</td>
+                <td>0.919901</td>
+                <td>0.811469</td>
+                <td>7.057569</td>
+                <td>64.87725</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>Inverse</td>
+                <td>1.000000</td>
+                <td>1.087074</td>
+                <td>1.232332</td>
+                <td>0.141692</td>
+                <td>0.015414</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <aside class=" col-md-4 col-sm-12 bg-info ">
+          <form #divisaForm="ngForm">
+            <div class="form-group ">
+              <br>
+        
+            </div>
+            <div class="form-group ">
+              <br>
+              <h3 class="text-center text-white">Conversor de Divisas</h3>
+              <label for="iddni" class="form-label">Ingresa tu email</label>
+              <input type="email" class="form-control" id="id" [(ngModel)]="divisa.emailCliente" name="email" required>
+              <label for="iddni" class="form-label">Cantidad</label>
+              <input type="number" class="form-control" id="iddni" [(ngModel)]="divisa.cantidadOrigen" name="cantidad" required>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">De</label>
+              <select class="form-control" [(ngModel)]="divisa.monedaOrigen" name="inicio" id="exampleFormControlSelect1"
+                required>
+                <option *ngFor="let e of divisas" [value]="e.name">{{e.name}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">A</label>
+              <select class="form-control" [(ngModel)]="divisa.monedaDestino" name="conversion" id="exampleFormControlSelect1"
+                required>
+                <option *ngFor="let e of divisas" [value]="e.name">{{e.name}}</option>      
+              </select>
+            </div>
+            <br>
+            <div class="alert alert-primary" role="alert">       
+              <label for="monedaDestino" class="form-label" [(ngModel)]="divisa.cantidadDestino"
+                name="monedaDestino">{{resultado}}</label>   
+            </div>       
+            <br>
+            <button type="button" class="form-control" (click)="cargarDivisas()"
+              [disabled]="divisaForm.invalid">Convertir</button>
+          </form>
+          <br>        
+        </aside>   
+        </div>
+        </div>
+        <button class="btn btn-primary" style="margin-top: 20px; margin-bottom: 20px; margin-left: 10px;" (click)="mostrarTransacciones()" >Recuperar Todos</button>
+        <button class="btn btn-primary" style="margin-top: 20px; margin-bottom: 20px; margin-left: 10px;" (click)="mostrarTransaccionesFiltros(divisa.monedaOrigen,divisa.monedaDestino)" >Recuperar por Filtro</button>
+        </body>

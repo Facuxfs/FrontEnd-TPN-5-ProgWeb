@@ -1,0 +1,36 @@
+<div class="card">
+    <div class="card-header">
+      GESTION DE SECTORES
+    </div>
+    <div class="card-body">
+        <form>
+            <div class="mb-3">
+                <label for="idprecio" class="form-label">Precio Ticket</label>
+                <input type="number" class="form-control" id="idprecio"
+                   [(ngModel)]="ticket.precioTicket" name="precioTicket"  >
+              </div>
+              <div class="mb-3">
+                <label for="idtipoExpectador" class="form-label">Categoria Espectador :  </label>        
+              <select id="select-menu" [(ngModel)]="ticket.categoriaEspectador" name="espectador" class="form-select" >   
+                <option *ngFor="let e of espectador"  [value]="e.name">{{e.name}}</option>
+              </select>
+              </div>
+              
+              <div class="mb-3">
+                <label for="idfecha" class="form-label">Fecha</label>
+                <input name="fechaCompra" [(ngModel)]="ticket.fechaCompra" type="text" class="form-control" id="idfecha"
+                    >
+              </div>
+              <div class="mb-3">
+                <label for="idresponsable" class="form-label">Espectador</label>
+                <select class="form-select" name="responsable" [(ngModel)]="ticket.espectador">
+                  <option *ngFor="let i of espectadores"  [ngValue]="i"> {{i.nombre}}, {{i.apellido}}</option>
+                </select>
+              </div>
+
+              <button type="button" *ngIf="accion=='new'" class="btn btn-primary" (click)="guardarTicket()">Guardar</button>              
+              <button type="button" *ngIf="accion=='update'" class="btn btn-primary" (click)="modificarTicket(ticket._id)">Actualizar</button>              
+
+        </form>
+    </div>
+</div>

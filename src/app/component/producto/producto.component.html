@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="container-fluid " style="background-color:antiquewhite ;">
+        <div class="row">
+            
+            <section class="col-md-12 ">
+                <button class="btn btn-primary " style="margin-top: 20px; margin-bottom: 20px;" (click)="agregarProducto()">Nuevo Producto</button>
+                
+                    <button class="btn btn-info" style="text-align: left;" value="1" (click)="obtenerProductos()">Todos</button>
+                    <button class="btn btn-info" style="text-align: right;" value="2" (click)="obtenerProductosDestacados()">Destacados</button>
+              
+                <div class="row ">
+
+                    <div class="row card-group ">
+                        <div class="col-lg-4 col-md-6 col-sm-6 " *ngFor="let s of productos">
+                            <div class="card"
+                                style="height: auto;  width: auto; background-color: slategray ; border-color: black;">
+                                <div class="row">
+                                    <img src="{{s.imagen}}" class="card-img-bottom col-6 "
+                                        style="height: 150px; width: 150px; margin-left: auto;margin-right: auto; margin-top: 20px;">
+                                    <div class="">
+                                        <h4 class="card-title " style="text-align:center; color: white;">
+                                            {{s.nombre}}</h4>
+                                        <h6 class="text-center" style="color: white;">{{s.descripcion}}</h6>
+                                        <h6 class="text-center" style="color: white;">Precio : $ {{s.precio}} </h6>
+                                        <h6 class="text-center" style="color: white;">Stock : {{s.stock}} disponibles</h6>
+                                        <button class="btn btn-primary " style="margin-left: 20px;" (click)="modificarProducto(s)">Modificar</button>
+                                        <button class="btn btn-danger " (click)="eliminarProducto(s)" >Eliminar</button> 
+                                        <p class="text-center" style="color: white;"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>

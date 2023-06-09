@@ -1,0 +1,32 @@
+
+<button class="btn btn-primary" style="margin-top: 20px; text-align: right; margin-bottom: 20px; margin-left: 10px;" (click)="botonAtras()" >Atras</button>
+<form >
+    <div class="mb-3">
+      <label for="idapellido" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="idapellido" [(ngModel)]="producto.nombre" name="Apellido" >
+    </div>
+    <div class="mb-3">
+      <label for="idnombre" class="form-label">Descripcion</label>
+      <input type="text" class="form-control" id="idnombre" [(ngModel)]="producto.descripcion"  name="Nombre" >
+    </div>
+    <div class="mb-3">
+        <label for="idimagen" class="form-label">URL Imagen</label>
+        <input type="text" class="form-control" id="idimagen" [(ngModel)]="producto.imagen" name="imagen" >
+      </div>
+    <div class="mb-3">
+        <label for="idprecio" class="form-label">Precio</label>
+        <input type="number" class="form-control" id="idprecio" [(ngModel)]="producto.precio"  name="precio" >
+      </div>
+      <div class="mb-3">
+        <label for="idstock" class="form-label">Stock</label>
+        <input type="number" class="form-control" id="idstock" [(ngModel)]="producto.stock"  name="stock" >
+      </div>
+
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="idactivo" [(ngModel)]="producto.destacado"  name="Activo">
+      <label class="form-check-label" for="idactivo">Destacado</label >
+    </div>
+    <button *ngIf="accion=='new'" type="submit" onClick="alert('Se va a Registrar el Socio')" (click)="guardarProducto()" class="btn btn-primary">Registrar</button>
+    <button *ngIf="accion=='update'" type="submit" onClick="alert('Se va a Registrar el Socio')"  (click)="modificarProducto()" class="btn btn-primary">Modificar</button>
+  </form>
+
