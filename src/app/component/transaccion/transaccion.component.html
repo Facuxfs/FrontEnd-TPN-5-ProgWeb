@@ -119,7 +119,17 @@
               <br>
               <h3 class="text-center text-white">Conversor de Divisas</h3>
               <label for="iddni" class="form-label">Ingresa tu email</label>
-              <input type="email" class="form-control" id="id" [(ngModel)]="divisa.emailCliente" name="email" required>
+              <input type="email" class="form-control" id="id" minlength="5" [(ngModel)]="divisa.emailCliente" name="email" required #email="ngModel" [email]="true">
+              <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger" >
+      
+                <div *ngIf="email.errors?.['required']">
+                  Email es requerido.
+                </div>
+                <div *ngIf="email.errors?.['email']">
+                  El email debe tener almenos 5 caracteres y contener @ 
+                </div>
+              </div>
+
               <label for="iddni" class="form-label">Cantidad</label>
               <input type="number" class="form-control" id="iddni" [(ngModel)]="divisa.cantidadOrigen" name="cantidad" required>
             </div>

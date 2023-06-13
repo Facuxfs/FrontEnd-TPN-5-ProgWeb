@@ -1,32 +1,73 @@
 
 <button class="btn btn-primary" style="margin-top: 20px; text-align: right; margin-bottom: 20px; margin-left: 10px;" (click)="botonAtras()" >Atras</button>
-<form >
+<form #productoform="ngForm">
     <div class="mb-3">
-      <label for="idapellido" class="form-label">Nombre</label>
-      <input type="text" class="form-control" id="idapellido" [(ngModel)]="producto.nombre" name="Apellido" >
+      <label for="idnombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="idnombre" [(ngModel)]="producto.nombre" name="Apellido" required #nombre="ngModel">
+      <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
+      
+        <div *ngIf="nombre.errors?.['required']">
+          Nombre es requerido.
+        </div>
+        <div *ngIf="nombre.errors?.['minlength']">
+          El nombre debe tener al menos 4 caracteres.
+        </div>
+      </div>
     </div>
     <div class="mb-3">
-      <label for="idnombre" class="form-label">Descripcion</label>
-      <input type="text" class="form-control" id="idnombre" [(ngModel)]="producto.descripcion"  name="Nombre" >
+      <label for="iddescripcion" class="form-label">Descripcion</label>
+      <input type="text" class="form-control" id="iddescripcion" [(ngModel)]="producto.descripcion"  name="Nombre" required #descripcion="ngModel">
+      <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)" class="alert alert-danger">
+      
+        <div *ngIf="descripcion.errors?.['required']">
+          Descripcion es requerida.
+        </div>
+        <div *ngIf="descripcion.errors?.['minlength']">
+          El nombre debe tener al menos 4 caracteres.
+        </div>
+      </div>
     </div>
     <div class="mb-3">
         <label for="idimagen" class="form-label">URL Imagen</label>
-        <input type="text" class="form-control" id="idimagen" [(ngModel)]="producto.imagen" name="imagen" >
+        <input type="text" class="form-control" id="idimagen" [(ngModel)]="producto.imagen" name="imagen" required #url="ngModel">
+        <div *ngIf="url.invalid && (url.dirty || url.touched)" class="alert alert-danger">
+      
+          <div *ngIf="url.errors?.['required']">
+            URL es requerida.
+          </div>
+          <div *ngIf="url.errors?.['minlength']">
+            El nombre debe tener al menos 4 caracteres.
+          </div>
+        </div>
       </div>
     <div class="mb-3">
         <label for="idprecio" class="form-label">Precio</label>
-        <input type="number" class="form-control" id="idprecio" [(ngModel)]="producto.precio"  name="precio" >
+        <input type="number" class="form-control" id="idprecio" [(ngModel)]="producto.precio"  name="precio" required #precio="ngModel">
+        <div *ngIf="precio.invalid && (precio.dirty || precio.touched)" class="alert alert-danger">
+      
+          <div *ngIf="precio.errors?.['required']">
+            Precio es requerido.
+          </div>
+         
+        </div>
       </div>
       <div class="mb-3">
         <label for="idstock" class="form-label">Stock</label>
-        <input type="number" class="form-control" id="idstock" [(ngModel)]="producto.stock"  name="stock" >
+        <input type="number" class="form-control" id="idstock" [(ngModel)]="producto.stock"  name="stock"  required #stock="ngModel">
+        <div *ngIf="stock.invalid && (stock.dirty || stock.touched)" class="alert alert-danger">
+      
+          <div *ngIf="stock.errors?.['required']">
+            Stock es requerido.
+          </div>
+         
+        </div>
       </div>
 
     <div class="mb-3 form-check">
       <input type="checkbox" class="form-check-input" id="idactivo" [(ngModel)]="producto.destacado"  name="Activo">
       <label class="form-check-label" for="idactivo">Destacado</label >
     </div>
-    <button *ngIf="accion=='new'" type="submit" onClick="alert('Se va a Registrar el Socio')" (click)="guardarProducto()" class="btn btn-primary">Registrar</button>
+    <button *ngIf="accion=='new'" type="submit" onClick="alert('Se va a Registrar el Socio')" (click)="guardarProducto()" class="btn btn-primary" [disabled]="productoform.invalid">Registrar</button>
     <button *ngIf="accion=='update'" type="submit" onClick="alert('Se va a Registrar el Socio')"  (click)="modificarProducto()" class="btn btn-primary">Modificar</button>
   </form>
 

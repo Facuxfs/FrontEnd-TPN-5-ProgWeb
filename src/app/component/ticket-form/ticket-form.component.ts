@@ -91,4 +91,8 @@ constructor(private activatedRoute: ActivatedRoute,private espectadorService:Esp
       }
     )
   }
+
+  botonAtras(){
+    this.router.navigate(["ticket"])
+  }
 }
